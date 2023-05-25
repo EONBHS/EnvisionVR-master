@@ -1,0 +1,271 @@
+        body {
+            margin: 0px;
+            background: linear-gradient(120deg, #2980b9, #8e44ad);
+			width: 100%;
+        }
+		.flex-item {
+			max-width: 30px;
+			min-height: 120px;
+			max-height: 120px;
+			flex: 1;
+			text-align: center;
+			margin: 10px;
+			padding: 10px;
+			/* background: #ecf0f1; */
+			border-radius: 5px;
+			position: relative; /* Add this line */
+		}
+		
+		/* Make game text underneath image */
+		.flex-item p {
+			margin-top: 0;
+		}
+		
+		/* Position the image */
+		.flex-item img {
+			position: absolute; /* Position the image absolutely */
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto; /* Center the image */
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+        .navbar {
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+		.search {
+			width: 25%;
+			height: 30px;
+			background-color: #696969;
+			color: #ddd;
+			text-align: left;
+		}
+		.search :active{
+			background-color: pink;
+		}
+		
+
+		/* Style the links inside the navigation bar */
+		.navbar a {
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+		/* Add a logo image */
+		.navbar img {
+            height: 40px;
+            width: 40;
+            margin: 0px;
+        }
+
+		/* Add a hover effect for links */
+		.navbar a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+
+		/* Add a current page indicator */
+		.active {
+			background-color: #4CAF50;
+			color: white;
+		}
+
+		/* Add a responsive menu icon */
+		.menu-icon {
+			display: none;
+			cursor: pointer;
+			float: right;
+			padding: 12px;
+			margin-top: 12px;
+			margin-right: 16px;
+		}
+
+		/* Add styles for the banner */
+		.banner {
+			background-image: url('banner.jpg');
+			background-size: cover;
+			background-position: center;
+			height: 400px;
+			position: relative;
+		}
+
+		/* Add styles for the banner text */
+		.banner-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: white;
+			font-size: 40px;
+			text-align: center;
+		}
+
+		/* Add styles for the footer */
+		footer {
+			background-color: #333;
+			color: white;
+			padding: 10px;
+			text-align: center;
+			position: relative;
+			bottom: 0px;
+			margin-bottom: 0px;
+			/* make footer stay at bottom */
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+
+		.container {
+			display: flex;
+			overflow-x: scroll;
+			scroll-behavior: smooth;
+			padding: 20px 0;
+		}
+
+		.category {
+			margin: 0 20px;
+		}
+
+		.category h2 {
+			margin-top: 0;
+		}
+
+		.category .game {
+			display: inline-block;
+			margin-right: 20px;
+			width: 200px;
+		}
+
+		.category .game img {
+			max-width: 100%;
+		}
+
+		.category button {
+			background-color: #ddd;
+			border: none;
+			color: #333;
+			cursor: pointer;
+			font-size: 16px;
+			padding: 10px 20px;
+			margin-right: 10px;
+		}
+
+		.category button:disabled {
+			background-color: #ccc;
+			color: #999;
+			cursor: default;
+		}
+
+		.category button.active {
+			background-color: #333;
+			color: #fff;
+		}
+
+		.flex-container {
+			display: flex;
+			flex-wrap: wrap;
+			background-color: DodgerBlue;
+			/* center */
+			justify-content: center;
+			align-items: center;
+
+			}
+
+		.flex-container > div {
+
+			width: 100px;
+			margin: 10px;
+			text-align: center;
+			line-height: 75px;
+			font-size: 30px;
+			height: 100px;
+			padding-left: 100px;
+		}
+
+		.flex-container img {
+			max-width: 150px;
+			max-height: 150px;
+			margin: 10px;
+			text-align: center;
+			line-height: 75px;
+			font-size: 30px;
+			height: 100px;
+			padding-left: 100px;
+		}
+
+		.center_dashboard {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: whitesmoke;
+			max-width: 100%;
+		}
+
+		.center_dashboard h1 {
+			font-size: 50px;
+			font-weight: 700;
+			margin-bottom: 20px;
+			color: darkgray;
+			padding-right: 10px;
+		}
+		.center_dashboard h2 {
+			font-size: 50px;
+			font-weight: 700;
+			margin-bottom: 20px;
+			color: darkgray;
+			padding-right: 10px;
+		}
+
+		.center_dashboard p {
+			font-size: 20px;
+			font-weight: 500;
+			margin-bottom: 20px;
+			color: darkgray;
+			padding: 10%
+		}
+
+		.frame {
+			width: 100%;
+			height: 100%;
+			border: none;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+		}
+
+		/* Add responsive styles */
+		@media screen and (max-width: 768px) {
+			/* Hide links on small screens */
+			.navbar a:not(:first-child) {
+				display: none;
+			}
+
+			/* Show menu icon */
+			.menu-icon {
+				display: block;
+			}
+
+			/* Add a responsive dropdown menu */
+
+			/* Iframe  */
+			
+		}

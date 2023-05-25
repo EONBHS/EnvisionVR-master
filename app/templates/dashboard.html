@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="static/layout.css">
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <div>
+            <nav class="navbar">
+              <a href="#"><img src="static/logo.png" alt="Logo"></a>
+              <a href="#" class="active">Home</a>
+              <a href="browse">Browse</a>
+              <a href="popular">Popular</a>
+              <a href="dashboard">Dashboard</a>
+              <div class="dropdown">
+                  <a href="#">Jams</a>
+              </div>
+              <input class="search" type="text" placeholder="Search.." >
+              <a href="#">Profile</a>
+              <a href="#" class="menu-icon">&#9776;</a>
+          </nav>
+          </div>
+          <!-- center column for dashboard -->
+            <div class="center_dashboard">
+                <div class="card">
+                    <h1>Upload</h1>
+                    <p>Upload a project</p>
+                    <form action="/zip" method="post" enctype="multipart/form-data">
+                        <label for="file">Select a .zip file:</label>
+                        <input type="file" id="file" name="file" accept=".zip">
+                        <br><br>
+                        <input type="submit" value="Upload">
+                      </form>
+                    </div>
+                <div class="card">
+                <h2>My Jams</h2>
+                <p>Here you can see your jams and your profile.</p>
+                </div>
+                <div class="card">
+                <h2>My Profile</h2>
+                <p>Here you can see your jams and your profile.</p>
+                </div>
+            </div>
+                
+
+                <footer>
+                <div class="footer">
+                    <p>&copy; 2023 My Company. All Rights Reserved.</p>
+                </div>
+                </footer>
+
+
+                <script>
+                    const menuIcon = document.querySelector('.menu-icon');
+                    const navbar = document.querySelector('.navbar');
+                    menuIcon.addEventListener('click', () => {
+                        navbar.classList.toggle('active');
+                    });
+                </script>
+             
+    </body>
+</html>

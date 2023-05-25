@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game Navigation</title>
+	<link rel="stylesheet" href="static/layout.css">
+</head>
+<body>
+
+	<nav class="navbar">
+		<a href="#"><img src="static/logo.png" alt="Logo"></a>
+		<a href="/" class="active">Home</a>
+		<a href="browse">Browse</a>
+		<a href="popular">Popular</a>
+		<a href="dashboard">Dashboard</a>
+		<div class="dropdown">
+			<a href="#">Jams</a>
+		</div>
+		<input class="search" type="text" placeholder="Search.." >
+		<a href="#">Profile</a>
+		<a href="#" class="menu-icon">&#9776;</a>
+	</nav>
+	
+	<!-- Layered display of games of different catagorys -->
+	<h1>Horror Games</h1>
+	<div class="flex-container">
+		
+		<!-- Clickable images -->
+		<div class="flex-item">
+			<a href="game">
+				<img src="static/placeholder.png">
+				<p>Game 1</p>
+			</a>
+		</div>
+		<div class="flex-item">
+			<a href="game">
+				<img src="static/placeholder.png">
+				<p>Game 2</p>
+			</a>
+		</div>
+		<div class="flex-item">
+			<a href="game">
+				<img src="static/placeholder.png">
+				<p>Game 3</p>
+			</a>
+		</div>
+		<div class="flex-item">
+			<a href="game">
+				<img src="static/placeholder.png">
+				<p>Game 4</p>
+			</a>
+		</div>
+		<div class="flex-item">
+			<a href="game">
+				<img src="static/placeholder.png" >
+				<p>Game 5</p>
+			</a>
+		</div>
+		<div class="flex-item">
+			<a href="game">
+				<img src="static/placeholder.png">
+				<p>Game 6</p>
+			</a>
+		</div>
+	
+	</div>
+</body>
+
+    <footer>
+    <div class="footer">
+        <p>&copy; 2023 My Company. All Rights Reserved.</p>
+    </div>
+    </footer>
+	<script>
+		const menuIcon = document.querySelector('.menu-icon');
+		const navbar = document.querySelector('.navbar');
+	
+		menuIcon.addEventListener('click', () => {
+			navbar.classList.toggle('active');
+		});
+	</script>
+
+</html>
+    

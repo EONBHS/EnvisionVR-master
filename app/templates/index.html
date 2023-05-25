@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PlayBurn</title>
+    <link rel="stylesheet" href="static/layout.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+
+  </head>
+  <body>
+    {% extends "layout.html" %}
+ 
+    {% block body %}
+    
+    
+
+<!-- Add banner with text -->
+
+
+<!-- Add main content -->
+<div class="content">
+    <!-- Add your content here -->
+    <h1>Browse our projects</h1>
+    <!-- Flex display of clickable images/text to go to a specific game -->
+    <div class="flex-container">
+        <div class="flex-item">
+            <a href="game/1">
+                <img src="static/logo.png" alt="Placeholder">
+              
+            </a>
+        </div>
+        <div class="flex-item">
+            <a href="game/2">
+                <img src="static/placeholder.png" alt="Placeholder">
+               
+            </a>
+        </div>
+        <div class="flex-item">
+            <a href="game/3">
+                <img src="static/placeholder.png" alt="Placeholder">
+               
+            </a>
+        </div>
+        <div class="flex-item">
+            <a href="game/4">
+                <img src="static/placeholder.png" alt="Placeholder">
+                <p>Game 4</p>
+            </a>
+        </div>
+        <div class="flex-item">
+            <a href="game/5">
+                <img src="static/placeholder.png" alt="Placeholder">
+                <p>Game 5</p>
+            </a>
+        </div>
+        <div class="flex-item">
+            <a href="game/6">
+                <img src="static/placeholder.png" alt="Placeholder">
+                <p>Game 6</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <div class="frame">
+    <iframe src="static/temp/index.html" width="1024" height="600"></iframe>
+</div> -->
+</div>
+{% endblock %}
+</body> 
+<!-- Add footer -->
+<footer>
+<div class="footer">
+    <p>&copy; 2023 My Company. All Rights Reserved.</p>
+</div>
+</footer>
+
+<!-- Add JavaScript to toggle the menu icon -->
+<script>
+    const menuIcon = document.querySelector('.menu-icon');
+    const navbar = document.querySelector('.navbar');
+
+    menuIcon.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+    });
+</script>
+</html>

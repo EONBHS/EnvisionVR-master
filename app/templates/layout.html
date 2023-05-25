@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="static/layout.css">
+        <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    
+    </head>
+    
+    <body>
+        <div>
+            <nav class="navbar">
+                <a href="#"><img src="static/logo.png" alt="Logo"></a>
+                <a href="#" class="active">Home</a>
+                <a href="browse">Browse</a>
+                <a href="popular">Popular</a>
+                <a href="dashboard">Dashboard</a>
+                <div class="dropdown">
+                    <a href="#">Jams</a>
+                </div>
+                <input class="search" type="text" placeholder="Search.." >
+                <a href="#">Profile</a>
+                <a href="#" class="menu-icon">&#9776;</a>
+            </nav>
+          </div>
+
+          {% block body %}
+
+          {% endblock %}
+
+          <div class="footer">
+            <p>&copy; 2023 My Company. All Rights Reserved.</p>
+            </div>
+
+
+          <script>
+            const menuIcon = document.querySelector('.menu-icon');
+            const navbar = document.querySelector('.navbar');
+        
+            menuIcon.addEventListener('click', () => {
+                navbar.classList.toggle('active');
+            });
+        </script>
+    </body>
+    
+</html>
