@@ -6,19 +6,10 @@
 </head>
 <body>
 
-	<nav class="navbar">
-		<a href="#"><img src="static/logo.png" alt="Logo"></a>
-		<a href="/" class="active">Home</a>
-		<a href="browse">Browse</a>
-		<a href="popular">Popular</a>
-		<a href="dashboard">Dashboard</a>
-		<div class="dropdown">
-			<a href="#">Jams</a>
-		</div>
-		<input class="search" type="text" placeholder="Search.." >
-		<a href="#">Profile</a>
-		<a href="#" class="menu-icon">&#9776;</a>
-	</nav>
+	{% extends "layout.html" %}
+ 
+    {% block body %}
+    
 	
 	<!-- Layered display of games of different catagorys -->
 	<h1>Horror Games</h1>
@@ -63,13 +54,10 @@
 		</div>
 	
 	</div>
+	
+	{% endblock %}
 </body>
 
-    <footer>
-    <div class="footer">
-        <p>&copy; 2023 My Company. All Rights Reserved.</p>
-    </div>
-    </footer>
 	<script>
 		const menuIcon = document.querySelector('.menu-icon');
 		const navbar = document.querySelector('.navbar');
