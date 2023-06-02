@@ -14,7 +14,7 @@ class games(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     description = db.Column(db.String)
-    downloadable = db.Column(db.String)
+    downloadable = db.Column(db.Boolean)
     genre = db.Column(db.String)
     filename = db.Column(db.String)
     dirname = db.Column(db.String)
@@ -22,6 +22,5 @@ class games(db.Model):
     splashscreen = db.Column(db.String)
     Game_image_1 = db.Column(db.String)
     Game_image_2 = db.Column(db.String)
-    Game_image_3 = db.Column(db.String)
     link = db.Column(db.String)
 

@@ -112,7 +112,11 @@ def dashboard():
     print(items)
     return render_template ('dashboard.html', items=items)
 
-
+@app.route('/addgame', methods=["GET", "POST"])
+def upload():
+    items = user.query.all()
+    print(items)
+    return render_template ('addgame.html', items=items)
     
 @app.route("/zip", methods=["GET", "POST"])
 def read_zip_file():

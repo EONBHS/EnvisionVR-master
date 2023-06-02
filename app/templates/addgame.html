@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Game</title>
+</head>
+<body>
+    {% extends "layout.html" %}
+    {% block body %}
+
+    <input type="text" id="Title" placeholder="Title" required>
+    <input type="text" id="GameDescription" placeholder="Game Description" required>
+    <input type="radio" id="DownloadableYes" name="DownloadableYes" value="1" required> Yes
+    <input type="radio" id="DownloadableNo" name="DownloadableNo" value="0" required> No
+    <select name="genre" id="genre" required>
+        <option value="1">Action</option>
+        <option value="2">Adventure</option>
+        <option value="3">RPG</option>
+        <option value="4">Strategy</option>
+        <option value="5">Sports</option>
+        <option value="6">Simulation</option>
+        <option value="7">Puzzle</option>
+        <option value="8">Idle</option>
+    </select>
+    <div class="card">
+        <h1>Upload</h1>
+        <p>Upload a project</p>
+        <form action="/zip" method="post" enctype="multipart/form-data">
+            <label for="file">Select a .zip file:</label>
+            <input type="file" id="file" name="file" accept=".zip" required>
+            <br><br>
+            <input type="submit" value="Upload">
+          </form>
+        </div>
+    <input type="file" id="splashscreen" name="splashscreen" accept=".jpeg,.png,.jpg">
+    <input type="file" id="image1" name="image1" accept=".jpeg,.png,.jpg">
+    <input type="file" id="image2" name="image2" accept=".jpeg,.png,.jpg">
+    {% endblock %}
+</body>
+</html>
