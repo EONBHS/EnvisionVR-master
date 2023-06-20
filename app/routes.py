@@ -114,13 +114,15 @@ def dashboard():
 
 @app.route('/addgame', methods=["GET", "POST"])
 def upload():
-    items = user.query.all()
-    print(items)
-    return render_template ('addgame.html', items=items)
-    
-@app.route("/zip", methods=["GET", "POST"])
-def read_zip_file():
-    file = request.files['file']
+    if request.method == 'POST':
+        name = request.form['name']
+        description = request.form['description']
+        downloadable = request.form['downloadable']
+        genre = request.form['genre']
+        splashscreen =request.form['splashscreen']
+        Game_image_1 = request.form['Game_image_1']
+        Game_image_2 = request.form['Game_image_2']
+        file = request.files['file']
     if file.filename.endswith('.zip'):
         # get filename
         filename = secure_filename(file.filename)
@@ -132,13 +134,19 @@ def read_zip_file():
         os.mkdir(dirpath)
         # Save filename to EnvisionVR.DB
         
-        new_game = games(filename=filename, dirname=dirname, dirpath=dirpath)
+        new_game = games(name=name,description=description,genre=genre,splashscreen=splashscreen,Game_image_1=Game_image_1,Game_image_2=Game_image_2,filename=filename, dirname=dirname, dirpath=dirpath)
         db.session.add(new_game)
         db.session.commit()
 
         # extract contents of the zip file to the new directory
         with zipfile.ZipFile(os.path.join(app.config['UPLOAD_FOLDER'], filename), 'r') as zip_ref:
             zip_ref.extractall(dirpath)
-        return redirect("/")
+        return redirect("/dashboard")
     else:
         return jsonify({'error': 'file must be a zip file'}), 400
+
+    
+@app.route("/game/<int:id>", methods=["GET", "POST"])
+def game(id):
+    game = games.query.get(id)
+    return render_template('game.html', game=game)
