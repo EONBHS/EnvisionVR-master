@@ -112,18 +112,29 @@ def dashboard():
     print(items)
     return render_template ('dashboard.html', items=items)
 
-@app.route('/addgame', methods=["GET", "POST"])
+@app.route('/addgame')
 def upload():
+   return render_template ('addgame.html')
+
+
+
+
+
+@app.route('/zip', methods=["GET", "POST"])
+def zip():
     if request.method == 'POST':
-        name = request.form['name']
-        description = request.form['description']
-        downloadable = request.form['downloadable']
-        genre = request.form['genre']
-        splashscreen =request.form['splashscreen']
-        Game_image_1 = request.form['Game_image_1']
-        Game_image_2 = request.form['Game_image_2']
-        file = request.files['file']
-    if file.filename.endswith('.zip'):
+        name = request.form.get('Title')
+        description = request.form.get('GameDescription')
+        downloadable = bool(request.form.get('Downloadable'))
+        
+        genre = request.form.get('genre')
+        splashscreen =request.form.get('splashscreen')
+        Game_image_1 = request.form.get('image_1')
+        Game_image_2 = request.form.get('image_2')
+        file = request.files.get('file')
+        
+       
+     
         # get filename
         filename = secure_filename(file.filename)
         # save file
@@ -134,19 +145,19 @@ def upload():
         os.mkdir(dirpath)
         # Save filename to EnvisionVR.DB
         
-        new_game = games(name=name,description=description,genre=genre,splashscreen=splashscreen,Game_image_1=Game_image_1,Game_image_2=Game_image_2,filename=filename, dirname=dirname, dirpath=dirpath)
+        new_game = games(name=name, description=description, downloadable=downloadable,genre=genre,splashscreen=splashscreen,Game_image_1=Game_image_1,Game_image_2=Game_image_2,filename=filename, dirname=dirname, dirpath=dirpath)
         db.session.add(new_game)
         db.session.commit()
+
 
         # extract contents of the zip file to the new directory
         with zipfile.ZipFile(os.path.join(app.config['UPLOAD_FOLDER'], filename), 'r') as zip_ref:
             zip_ref.extractall(dirpath)
         return redirect("/dashboard")
-    else:
-        return jsonify({'error': 'file must be a zip file'}), 400
-
     
-@app.route("/game/<int:id>", methods=["GET", "POST"])
+
+    #/game
+@app.route('/<int:id>', methods=["GET", "POST"])
 def game(id):
     game = games.query.get(id)
     return render_template('game.html', game=game)

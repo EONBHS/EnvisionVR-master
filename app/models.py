@@ -22,5 +22,5 @@ class games(db.Model):
     splashscreen = db.Column(db.String)
     Game_image_1 = db.Column(db.String)
     Game_image_2 = db.Column(db.String)
-    link = db.Column(db.String)
+
 
