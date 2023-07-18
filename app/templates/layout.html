@@ -17,7 +17,12 @@
                     <a href="#">Jams</a>
                 </div>
                 <input class="search" type="text" placeholder="Search.." >
+                {% if session.logged_in %}
                 <a href="#">Profile</a>
+                <a href="logout">Logout</a>
+                {% else %}
+                <a href="login">Login</a>
+                {% endif %}
                 <a href="#" class="menu-icon">&#9776;</a>
             </nav>
           </div>
