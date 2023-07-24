@@ -245,6 +245,22 @@
 
 		}
 
+		.card {
+			background-color: white;
+			
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			padding: 30px;
+			width: 400px;
+			height: 300px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+
+		
+
 		/* Add responsive styles */
 		@media screen and (max-width: 768px) {
 			/* Hide links on small screens */

@@ -74,7 +74,8 @@ def callback():
     db.session.add(new_user)
     db.session.commit()
 
-    
+    #Logged in session
+    session['logged_in'] = True
 
     return redirect('/')
 
@@ -95,9 +96,8 @@ def home():
 
 @app.route('/browse', methods=["GET", "POST"])
 def browse():
-    items = user.query.all()
-    print(items)
-    return render_template ('browse.html', items=items)
+    game = games.query.get(id)
+    return render_template ('browse.html', game=game)
 
 # a route that will display popular.html
 @app.route('/popular', methods=["GET", "POST"])
@@ -133,7 +133,7 @@ def zip():
         Game_image_2 = request.form.get('image_2')
         file = request.files.get('file')
         
-       
+        
      
         # get filename
         filename = secure_filename(file.filename)
@@ -144,7 +144,15 @@ def zip():
         dirpath = os.path.join('app/static/temp', dirname)
         os.mkdir(dirpath)
         # Save filename to EnvisionVR.DB
-        
+        splash = secure_filename(splashscreen.filename)
+        splashscreen.save(app.config['UPLOAD_FOLDER'], filename, splash)
+
+        image1 = secure_filename(Game_image_1.filename)
+        Game_image_1.save(app.config['UPLOAD_FOLDER'], filename, image1)
+
+        image2 = secure_filename(Game_image_2.filename)
+        Game_image_2.save(app.config['UPLOAD_FOLDER'], filename, image2)
+
         new_game = games(name=name, description=description, downloadable=downloadable,genre=genre,splashscreen=splashscreen,Game_image_1=Game_image_1,Game_image_2=Game_image_2,filename=filename, dirname=dirname, dirpath=dirpath)
         db.session.add(new_game)
         db.session.commit()
