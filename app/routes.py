@@ -1,7 +1,7 @@
 from flask import Flask,render_template,redirect,request,jsonify,abort,session
 from flask_cors import CORS
 from app import app, db, models
-from app.models import user, games
+from app.models import User, Games
 from werkzeug.utils import secure_filename
 
 # GOOGLE AUTH
@@ -70,7 +70,7 @@ def callback():
     session['picture'] = id_info['picture']
 
     # add user to database
-    new_user = user(google_ID=session['google_id'], name=session['name'], email=session['email'], Profilepicture=session['picture'])
+    new_user = User(google_ID=session['google_id'], name=session['name'], email=session['email'], Profilepicture=session['picture'])
     db.session.add(new_user)
     db.session.commit()
 
@@ -90,25 +90,25 @@ def logout():
 def home():
 
     # Query filename,dirname,dirpath from EnvisionVR.DB
-    GameID = games.query.all()
-    print(GameID)
-    return render_template ('index.html', GameID=GameID)
+    gameID = Games.query.all()
+    print(gameID)
+    return render_template ('index.html', gameID=gameID)
 
 @app.route('/browse', methods=["GET", "POST"])
 def browse():
-    game = games.query.get(id)
+    game = Games.query.get(id)
     return render_template ('browse.html', game=game)
 
 # a route that will display popular.html
 @app.route('/popular', methods=["GET", "POST"])
 def popular():
-    items = user.query.all()
+    items = User.query.all()
     print(items)
     return render_template ('popular.html', items=items)
 
 @app.route('/dashboard', methods=["GET", "POST"])
 def dashboard():
-    items = user.query.all()
+    items = User.query.all()
     print(items)
     return render_template ('dashboard.html', items=items)
 
@@ -128,9 +128,9 @@ def zip():
         downloadable = bool(request.form.get('Downloadable'))
         
         genre = request.form.get('genre')
-        splashscreen =request.form.get('splashscreen')
-        Game_image_1 = request.form.get('image_1')
-        Game_image_2 = request.form.get('image_2')
+        splashscreen = request.files.get('splashscreen')
+        game_image_1 = request.files.get('image_1')
+        game_image_2 = request.files.get('image_2')
         file = request.files.get('file')
         
         
@@ -143,17 +143,21 @@ def zip():
         dirname = os.path.splitext(filename)[0]
         dirpath = os.path.join('app/static/temp', dirname)
         os.mkdir(dirpath)
-        # Save filename to EnvisionVR.DB
+        # Save filename to EnvisionVR.DB 
+        print(dirname)
+        print(dirpath)
+        
+ 
         splash = secure_filename(splashscreen.filename)
-        splashscreen.save(app.config['UPLOAD_FOLDER'], filename, splash)
+        splashscreen.save(app.config['UPLOAD_FOLDER'], splash)
 
-        image1 = secure_filename(Game_image_1.filename)
-        Game_image_1.save(app.config['UPLOAD_FOLDER'], filename, image1)
+        image1 = secure_filename(game_image_1.filename)
+        game_image_1.save(app.config['UPLOAD_FOLDER'], image1)
 
-        image2 = secure_filename(Game_image_2.filename)
-        Game_image_2.save(app.config['UPLOAD_FOLDER'], filename, image2)
+        image2 = secure_filename(game_image_2.filename)
+        game_image_2.save(app.config['UPLOAD_FOLDER'], image2)
 
-        new_game = games(name=name, description=description, downloadable=downloadable,genre=genre,splashscreen=splashscreen,Game_image_1=Game_image_1,Game_image_2=Game_image_2,filename=filename, dirname=dirname, dirpath=dirpath)
+        new_game = Games(name=name, description=description, downloadable=downloadable,genre=genre,splash=splash,image1=image1,image2=image2,filename=filename, dirname=dirname, dirpath=dirpath)
         db.session.add(new_game)
         db.session.commit()
 
@@ -167,5 +171,5 @@ def zip():
     #/game
 @app.route('/<int:id>', methods=["GET", "POST"])
 def game(id):
-    game = games.query.get(id)
+    game = Games.query.get(id)
     return render_template('game.html', game=game)

@@ -3,14 +3,16 @@ from app import db
 
 
 
-class user(db.Model):
+class User(db.Model): 
+    """The User Class, contains information on the user supplied by their google account when they login."""
     id = db.Column(db.Integer, primary_key=True)
     google_ID = db.Column(db.String)
     name = db.Column(db.String)
     email = db.Column(db.String)
     Profilepicture = db.Column(db.String)
 
-class games(db.Model):
+class Games(db.Model):
+    """The Games Class contains information supplied by the user about their game."""
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     description = db.Column(db.String)
