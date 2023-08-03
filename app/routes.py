@@ -90,14 +90,15 @@ def logout():
 def home():
 
     # Query filename,dirname,dirpath from EnvisionVR.DB
-    gameID = Games.query.all()
-    print(gameID)
-    return render_template ('index.html', gameID=gameID)
+    games = Games.query.all()   
+    horrors = Games.query.filter(Games.genre == "1").all()
+
+    return render_template ('index.html', games=games,horrors=horrors)
 
 @app.route('/browse', methods=["GET", "POST"])
 def browse():
-    game = Games.query.get(id)
-    return render_template ('browse.html', game=game)
+    
+    return render_template ('browse.html')
 
 # a route that will display popular.html
 @app.route('/popular', methods=["GET", "POST"])
@@ -129,13 +130,11 @@ def zip():
         
         genre = request.form.get('genre')
         splashscreen = request.files.get('splashscreen')
-        game_image_1 = request.files.get('image_1')
-        game_image_2 = request.files.get('image_2')
-        file = request.files.get('file')
+        image_1 = request.files.get('image1')
+        image_2 = request.files.get('image2')
+        file = request.files.get('zipfile')
+
         
-        
-     
-        # get filename
         filename = secure_filename(file.filename)
         # save file
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -149,15 +148,13 @@ def zip():
         
  
         splash = secure_filename(splashscreen.filename)
-        splashscreen.save(app.config['UPLOAD_FOLDER'], splash)
+        
 
-        image1 = secure_filename(game_image_1.filename)
-        game_image_1.save(app.config['UPLOAD_FOLDER'], image1)
+        image1 = secure_filename(image_1.filename)
 
-        image2 = secure_filename(game_image_2.filename)
-        game_image_2.save(app.config['UPLOAD_FOLDER'], image2)
+        image2 = secure_filename(image_2.filename)
 
-        new_game = Games(name=name, description=description, downloadable=downloadable,genre=genre,splash=splash,image1=image1,image2=image2,filename=filename, dirname=dirname, dirpath=dirpath)
+        new_game = Games(name=name, description=description, downloadable=downloadable,genre=genre,splashscreen=splash,image1=image1,image2=image2,filename=filename, dirname=dirname, dirpath=dirpath)
         db.session.add(new_game)
         db.session.commit()
 
