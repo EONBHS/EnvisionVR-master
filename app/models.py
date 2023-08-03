@@ -22,7 +22,7 @@ class Games(db.Model):
     dirname = db.Column(db.String)
     dirpath = db.Column(db.String)
     splashscreen = db.Column(db.String)
-    Game_image_1 = db.Column(db.String)
-    Game_image_2 = db.Column(db.String)
+    image1 = db.Column(db.String)
+    image2 = db.Column(db.String)
 
 
