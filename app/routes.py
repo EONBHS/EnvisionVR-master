@@ -148,13 +148,16 @@ def zip():
         
  
         splash = secure_filename(splashscreen.filename)
-        
+        splashscreen.save(os.path.join(dirpath, splash))
 
         image1 = secure_filename(image_1.filename)
+        image_1.save(os.path.join(dirpath, image1))
+       
 
         image2 = secure_filename(image_2.filename)
-
-        new_game = Games(name=name, description=description, downloadable=downloadable,genre=genre,splashscreen=splash,image1=image1,image2=image2,filename=filename, dirname=dirname, dirpath=dirpath)
+        image_2.save(os.path.join(dirpath, image2))
+        
+        new_game = Games(name=name, description=description, downloadable=downloadable,genre=genre,User_ID=session['google_id'],splashscreen=splash,image1=image1,image2=image2,filename=filename, dirname=dirname, dirpath=dirpath)
         db.session.add(new_game)
         db.session.commit()
 

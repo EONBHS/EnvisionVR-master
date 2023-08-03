@@ -20,8 +20,9 @@
 <!-- Add banner with text -->
 
 {% for horror in horrors %}
-<h1>{{horror.id}}</h1>
-<img src="{{horror.dirpath}},{{horror.splashscreen}}" alt="Placeholder">
+<a href = "{{horror.id}}">
+<img src="static/temp/{{horror.dirname}}/{{horror.splashscreen}}" alt="Placeholder">
+</a>
 {% endfor %}
 
 <!-- Add main content -->
