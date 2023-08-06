@@ -1,6 +1,6 @@
-from flask import Flask,render_template,redirect,request,jsonify,abort,session
+from flask import render_template,redirect,request,abort,session
 from flask_cors import CORS
-from app import app, db, models
+from app import app, db
 from app.models import User, Games
 from werkzeug.utils import secure_filename
 
@@ -91,14 +91,25 @@ def home():
 
     # Query filename,dirname,dirpath from EnvisionVR.DB
     games = Games.query.all()   
-    horrors = Games.query.filter(Games.genre == "1").all()
+    
 
-    return render_template ('index.html', games=games,horrors=horrors)
+    return render_template ('index.html', games=games)
 
 @app.route('/browse', methods=["GET", "POST"])
 def browse():
-    
-    return render_template ('browse.html')
+    ''' docstrin'''
+    actions = Games.query.filter(Games.genre == "1").all()
+    adventures = Games.query.filter(Games.genre == "2").all()
+    rpgs = Games.query.filter(Games.genre == "3").all()
+    strategys = Games.query.filter(Games.genre == "4").all()
+    sports = Games.query.filter(Games.genre == "5").all()
+    simulations = Games.query.filter(Games.genre == "6").all()
+    puzzles = Games.query.filter(Games.genre == "7").all()
+    idles = Games.query.filter(Games.genre == "8").all()
+    horrors = Games.query.filter(Games.genre == "9").all()
+    platformers = Games.query.filter(Games.genre == "10").all()
+    others = Games.query.filter(Games.genre == "11").all()
+    return render_template ('browse.html', actions=actions, adventures=adventures, rpgs=rpgs, strategys=strategys, sports=sports, simulations=simulations, puzzles=puzzles, idles=idles, horrors=horrors, platformers=platformers, others=others)
 
 # a route that will display popular.html
 @app.route('/popular', methods=["GET", "POST"])

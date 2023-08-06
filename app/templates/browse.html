@@ -12,124 +12,126 @@
     
 	
 	<!-- Layered display of games of different catagorys -->
-	<h1>Horror Games</h1>
+	<h1>Action Games</h1>
 	<div class="flex-container">
+        {% for action in actions %}
         <div class="flex-item">
-            <a href="/1">
-                <img src="static/Default.jpeg" alt="Placeholder">
-              
+            <a href="{{action.id}}">
+                <img src="static/temp/{{action.dirname}}/{{action.splashscreen}}
             </a>
         </div>
-        <div class="flex-item">
-            <a href="/2">
-                <img src="static/Default.jpeg" alt="Placeholder">
-               
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/3">
-                <img src="static/Default.jpeg" alt="Placeholder">
-               
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/4">
-                <img src="static/Default.jpeg" alt="Placeholder">
-                
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/5">
-                <img src="static/Default.jpeg" alt="Placeholder">
-                
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/6">
-                <img src="static/Default.jpeg" alt="Placeholder">
-                
-            </a>
-        </div>
-    </div>
-	<h1>Survival Games</h1>
-	<div class="flex-container">
-        <div class="flex-item">
-            <a href="/1">
-                <img src="static/Default.jpeg" alt="Placeholder">
-              
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/2">
-                <img src="static/Default.jpeg" alt="Placeholder">
-               
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/3">
-                <img src="static/Default.jpeg" alt="Placeholder">
-               
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/4">
-                <img src="static/Default.jpeg" alt="Placeholder">
-                
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/5">
-                <img src="static/Default.jpeg" alt="Placeholder">
-                
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/6">
-                <img src="static/Default.jpeg" alt="Placeholder">
-                
-            </a>
-        </div>
+        {% endfor %}
     </div>
 	<h1>Adventure Games</h1>
 	<div class="flex-container">
+        {% for adventure in adventures %}
         <div class="flex-item">
-            <a href="/1">
-                <img src="static/Default.jpeg" alt="Placeholder">
+            <a href="{{adventure.id}}">
+                <img src="static/temp/{{adventure.dirname}}/{{adventure.splashscreen}}" alt="Placeholder">
               
             </a>
         </div>
-        <div class="flex-item">
-            <a href="/2">
-                <img src="static/Default.jpeg" alt="Placeholder">
-               
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/3">
-                <img src="static/Default.jpeg" alt="Placeholder">
-               
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/4">
-                <img src="static/Default.jpeg" alt="Placeholder">
-                
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/5">
-                <img src="static/Default.jpeg" alt="Placeholder">
-                
-            </a>
-        </div>
-        <div class="flex-item">
-            <a href="/6">
-                <img src="static/Default.jpeg" alt="Placeholder">
-                
-            </a>
-        </div>
+        {% endfor %}
     </div>
-	
+	<h1>RPG Games</h1>
+    <div class="flex-container">
+        {% for rpg in rpgs %}
+        <div class="flex-item">
+            <a href="{{rpg.id}}">
+                <img src="static/temp/{{rpg.dirname}}/{{rpg.splashscreen}}" alt="Placeholder">
+              
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <h1>Strategy Games</h1>
+    <div class="flex-container">
+        {% for strategy in strategys %}
+        <div class="flex-item">
+            <a href="{{game.id}}">
+                <img src="static/temp/{{strategy.dirname}}/{{strategy.splashscreen}}" alt="Placeholder">
+              
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <h1>Sport Games</h1>
+    <div class="flex-container">
+        {% for sport in sports %}
+        <div class="flex-item">
+            <a href="{{sport.id}}">
+                <img src="static/temp/{{sport.dirname}}/{{sport.splashscreen}}" alt="Placeholder">
+              
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+	<h1>Simulation Games</h1>
+    <div class="flex-container">
+        {% for simulation in simulations %}
+        <div class="flex-item">
+            <a href="{{simulation.id}}">
+                <img src="static/temp/{{simulation.dirname}}/{{simulation.splashscreen}}" alt="Placeholder">
+              
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <h1>Puzzle Games</h1>
+    <div class="flex-container">
+        {% for puzzle in puzzles %}
+        <div class="flex-item">
+            <a href="{{puzzle.id}}">
+                <img src="static/temp/{{puzzle.dirname}}/{{puzzle.splashscreen}}" alt="Placeholder">
+              
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <h1>Idle Games</h1>
+    <div class="flex-container">
+        {% for idle in idles %}
+        <div class="flex-item">
+            <a href="{{idle.id}}">
+                <img src="static/temp/{{idle.dirname}}/{{idle.splashscreen}}" alt="Placeholder">
+              
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+	<h1>Horror Games</h1>
+    <div class="flex-container">
+        {% for horror in horrors %}
+        <div class="flex-item">
+            <a href="{{horror.id}}">
+                <img src="static/temp/{{horror.dirname}}/{{horror.splashscreen}}" alt="Placeholder">
+              
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <h1>Platformer Games</h1>
+    <div class="flex-container">
+        {% for platformer in platformers %}
+        <div class="flex-item">
+            <a href="{{platformer.id}}">
+                <img src="static/temp/{{platformer.dirname}}/{{platformer.splashscreen}}" alt="Placeholder">
+              
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <h1>Other Games</h1>
+    <div class="flex-container">
+        {% for other in others %}
+        <div class="flex-item">
+            <a href="{{other.id}}">
+                <img src="static/temp/{{other.dirname}}/{{other.splashscreen}}" alt="Placeholder">
+              
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 	{% endblock %}
 </body>
 
