@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <body>
+        {% extends "layout.html" %}
+        {% block body %}
+        <div class="card">
+            <h1>Create Jam</h1>
+            <p>Create a new jam</p>
+            <form action="/createjam" method="post" enctype="multipart/form-data">
+                <input type="text" id="Title" name="Title" required>
+                <input type="text" id="Description" name="Description" required>
+                <input type="date" id="StartDate" name="StartDate" required>
+                <input type="date" id="EndDate" name="EndDate" required>
+                <input type="file" id="Image" name="Image" accept=".jpeg,.png,.jpg">
+                <input type="submit" value="Create">
+            </form>
+        </div>
+        {% endblock %}
+    </body>
+</html>

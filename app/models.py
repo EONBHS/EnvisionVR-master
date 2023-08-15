@@ -28,4 +28,15 @@ class Games(db.Model):
     user = db.relationship("User",
     backref="Game") 
 
+class Jams(db.Model):
+    """The Jam Class contains information on the game jam."""
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    description = db.Column(db.String)
+    startdate = db.Column(db.String)
+    enddate = db.Column(db.String)
+    theme = db.Column(db.String)
+    image = db.Column(db.String)
+    game = db.relationship("Games",
+    backref="Jam")
 
